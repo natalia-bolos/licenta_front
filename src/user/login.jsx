@@ -2,13 +2,15 @@ import React from "react";
 import loginImg from "../login.svg";
 import { ACCESS_TOKEN, USER_ID } from '../constants';
 import { login } from '../util/ApiUtils';
+import { Dashboard } from "../pages/Dashboard";
 
 export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state={
       username:"",
-      password:""
+      password:"",
+      loggedIn:false
     };
     this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
     this.handlePasswordInputChange=this.handlePasswordInputChange.bind(this);
@@ -30,9 +32,14 @@ export class Login extends React.Component {
       console.log("logged in ok!");
       console.log(localStorage.getItem(ACCESS_TOKEN));
       console.log(localStorage.getItem(USER_ID));
+      this.setState({loggedIn:true});
+      
   })
 }
   render() {
+    if(this.state.loggedIn){
+      return <Dashboard username={this.state.username}/>
+    }else{
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
@@ -60,5 +67,5 @@ export class Login extends React.Component {
         </div>
       </div>
     );
-  }
+  }}
 }

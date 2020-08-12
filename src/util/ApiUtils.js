@@ -37,3 +37,10 @@ export function signup(signupRequest) {
         body: JSON.stringify(signupRequest)
     });
 }
+
+export function getGroupsOfUser(userId){
+    return request({
+        url:API_BASE_URL+"group/"+userId,
+        method:'GET'
+    })
+}
