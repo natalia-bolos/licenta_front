@@ -10,6 +10,7 @@ export class GroupList extends Component{
            groups:[]
           };
     }
+    
 
     componentDidMount() {
         getGroupsOfUser(localStorage.getItem(USER_ID)).then(response=>{

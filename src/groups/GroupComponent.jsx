@@ -2,10 +2,10 @@ import React from "react";
 
 const GroupComponent =({id,name,type,description,onGroupClicked})=>{
     return(
-        <li>
+        <li onClick={()=>onGroupClicked(id,name)}>
             <h2>{name}</h2>
             <p>{description}</p>
-            <button onClick={()=>onGroupClicked(id)}>Select</button>
+            {/* <button onClick={()=>onGroupClicked(id)}>Select</button> */}
         </li>
     )
 };

@@ -51,3 +51,10 @@ export function getPostsOfGroup(groupId){
         method:'GET'
     })
 }
+
+export function getMembersOfGroup(groupId){
+    return request({
+        url:API_BASE_URL+"group/members/"+groupId,
+        method:'GET'
+    })
+}

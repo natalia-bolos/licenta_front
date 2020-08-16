@@ -11,9 +11,9 @@ export class GroupData extends React.Component{
     render() {
         const postList=this.props.posts.map(post=><PostWithComments key={post.postId} userId={post.userId} postId={post.postId} text={post.text} timestamp={post.timestamp} comments={post.comments}/>)
         return (
-            <div className="dashboard container">
+            <div className="container">
                 <div className="row">
-                    <h1>Hello, {localStorage.getItem(USER_NAME)}</h1>
+                    <h5>{this.props.groupName}</h5>
                    {postList}
                 </div>
             </div>)
