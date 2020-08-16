@@ -18,7 +18,7 @@ export class GroupList extends Component{
     }
 
     render(){
-        const groupList=this.state.groups.map(group=><GroupComponent key={group.groupId} name={group.name} type={group.type} description={group.description}/>)
+        const groupList=this.state.groups.map(group=><GroupComponent onGroupClicked={this.props.onGroupClicked} key={group.groupId} id={group.groupId} name={group.name} type={group.type} description={group.description}/>)
         return(
             <ul>
                 {groupList}

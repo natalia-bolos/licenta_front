@@ -1,6 +1,6 @@
 import React from "react";
 import loginImg from "../login.svg";
-import { ACCESS_TOKEN, USER_ID } from '../constants';
+import { ACCESS_TOKEN, USER_ID,USER_NAME } from '../constants';
 import { login } from '../util/ApiUtils';
 import { Dashboard } from "../pages/Dashboard";
 
@@ -12,6 +12,7 @@ export class Login extends React.Component {
       password:"",
       loggedIn:false
     };
+    console.log(props.logInSuccessRedirection);
     this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
     this.handlePasswordInputChange=this.handlePasswordInputChange.bind(this);
     this.loginApiCallOnClick=this.loginApiCallOnClick.bind(this);
@@ -29,11 +30,9 @@ export class Login extends React.Component {
     login({"usernameOrEmail":this.state.username,"password":this.state.password}).then(response => {
       localStorage.setItem(ACCESS_TOKEN, response.accessToken);
       localStorage.setItem(USER_ID,response.userId);
+      localStorage.setItem(USER_NAME,this.state.username);
       console.log("logged in ok!");
-      console.log(localStorage.getItem(ACCESS_TOKEN));
-      console.log(localStorage.getItem(USER_ID));
-      this.setState({loggedIn:true});
-      
+      this.props.logInSuccessRedirection();    
   })
 }
   render() {

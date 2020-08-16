@@ -44,3 +44,10 @@ export function getGroupsOfUser(userId){
         method:'GET'
     })
 }
+
+export function getPostsOfGroup(groupId){
+    return request({
+        url:API_BASE_URL+"posts/group/"+groupId,
+        method:'GET'
+    })
+}
