@@ -9,27 +9,19 @@ export class Register extends React.Component {
       name:"",
       username:"",
       email:"",
-      password:""
+      password:"",
+      phoneNumber:""
     };
-    this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
-    this.handlePasswordInputChange=this.handlePasswordInputChange.bind(this);
-    this.handleNameInputChange=this.handleNameInputChange.bind(this);
-    this.handleEmailInputChange=this.handleEmailInputChange.bind(this);
+
     this.signUpApiCallOnClick=this.signUpApiCallOnClick.bind(this);
   }
-  handleUsernameInputChange(event) {
-    this.setState({username: event.target.value})
-    
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
   }
-  handlePasswordInputChange(event) {
-    this.setState({password: event.target.value})
-  }
-  handleNameInputChange(event){
-    this.setState({name: event.target.value})
-  }
-  handleEmailInputChange(event){
-    this.setState({email: event.target.value})
-  }
+
 
   signUpApiCallOnClick(){
       signup({
@@ -37,6 +29,8 @@ export class Register extends React.Component {
         "username":this.state.username,
         "mail":this.state.email,
         "password":this.state.password,
+        "phoneNumber":this.state.phoneNumber
+
       }).then(response => {
         // localStorage.setItem(ACCESS_TOKEN, response.accessToken);
         console.log("registered ok!");
@@ -56,24 +50,30 @@ export class Register extends React.Component {
           <div className="form">
             <div className="form-group">
               <label htmlFor="name">Name:</label>
-              <input type="text" name="name" placeholder="name" value={this.state.name} 
-                       onChange={this.handleNameInputChange}/>
+              <input type="text" name="name" placeholder="name" id="name" value={this.state.name} 
+                       onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
-              <input type="text" name="username" placeholder="username" value={this.state.username} 
-                       onChange={this.handleUsernameInputChange}/>
+              <input type="text" name="username" placeholder="username" id="username" value={this.state.username} 
+                       onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
-              <input type="text" name="email" placeholder="email" value={this.state.email} 
-                       onChange={this.handleEmailInputChange}/>
+              <input type="text" name="email" placeholder="email" id="email" value={this.state.email} 
+                       onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="phoneNumber">Phone Number:</label>
+              <input type="text" name="email" placeholder="phoneNumber" id="phoneNumber" value={this.state.phoneNumber} 
+                       onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input type="text" name="password" placeholder="password" value={this.state.password} 
-                       onChange={this.handlePasswordInputChange} />
+              <input type="text" name="password" placeholder="password" id="password" value={this.state.password} 
+                       onChange={this.handleChange} />
             </div>
+            
           </div>
         </div>
         <div className="footer">
