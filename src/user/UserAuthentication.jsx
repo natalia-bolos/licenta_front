@@ -1,6 +1,6 @@
 import React from "react";
 import "../user/UserAuthentication.scss";
-import { Login, Register } from "../user/index";
+import { Login, Register } from "./Index";
 
 class UserAuthentication extends React.Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class UserAuthentication extends React.Component {
     return (
       <div className="UserAuthentication">
         <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
+          <div className="container_user" ref={ref => (this.container = ref)}>
             {isLogginActive && (
               <Login logInSuccessRedirection={this.redirectToDashboardOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
             )}

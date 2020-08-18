@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import logo from "./logo.png";
 import SignedInLink from './SignedInLink';
 import SignedOutLink from './SignedOutLink';
+import './navbar.css';
 
 const Navbar = () => {
     return(
