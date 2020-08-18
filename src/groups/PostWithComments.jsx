@@ -1,16 +1,15 @@
 import React from "react";
 import PostComment from "./PostComment";
 
-const PostWithComments =({postId,userId,text,timestamp,comments})=>{
-const commentsList=comments.map(comment=><PostComment postId={comment.postId} userId={comment.userId} text={comment.text} timestamp={comment.timestamp}/>)
+const PostWithComments =({postId,userId, username,text,timestamp,comments})=>{
+const commentsList=comments.map(comment=><PostComment postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp}/>)
 
     return(
         <div className="card">
-            <p>{postId}</p>
-            <p>Id of user that made the post {userId}</p>
-            <p>{text}</p>
+            <p><b>{username}</b></p>
+            <p><b>{text}</b></p>
             <p>{timestamp}</p>
-            {commentsList}
+            <ul>{commentsList}</ul>       
         </div>
     )
 };

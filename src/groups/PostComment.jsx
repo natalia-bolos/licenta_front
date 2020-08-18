@@ -1,13 +1,12 @@
 import React from "react";
 
-const PostComment =({postId,userId,text,timestamp})=>{
+const PostComment =({postId,userId,username,text,timestamp})=>{
     return(
-        <div className="card">
-            <p>{postId}</p>
-            <p>Id of user that made the post {userId}</p>
+        <li className="card">
+            <p><b>{username}</b></p>
             <p>{text}</p>
             <p>{timestamp}</p>
-        </div>
+        </li>
     )
 };
 

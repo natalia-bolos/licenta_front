@@ -9,7 +9,7 @@ export class GroupData extends React.Component{
     }
 
     render() {
-        const postList=this.props.posts.map(post=><PostWithComments key={post.postId} userId={post.userId} postId={post.postId} text={post.text} timestamp={post.timestamp} comments={post.comments}/>)
+        const postList=this.props.posts.map(post=><PostWithComments key={post.postId} userId={post.userId} username={post.username} postId={post.postId} text={post.text} timestamp={post.timestamp} comments={post.comments}/>)
         return (
             <div className="container">
                 <div className="row">
