@@ -7,6 +7,14 @@ import { Dashboard } from './pages/Dashboard';
 import "./App.css";
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      landing:true
+    };
+  }
+
   render(){
     return (
       <BrowserRouter>
@@ -15,10 +23,9 @@ class App extends React.Component {
           background: "linear-gradient(to top, #e0dede, #dedede)",
           top:'0', bottom:'0', left:'0', right:'0', position: 'absolute'}}>
           <Navbar />
-          <Landing />
           <Route path="/start" component={UserAuthentication}/>
           <Route path="/dashboard" component={Dashboard}/>
-          {/* <Link to="start">Start</Link> */}
+          <Route exact path="/" component={Landing}/>
         </div> 
       </BrowserRouter>
       

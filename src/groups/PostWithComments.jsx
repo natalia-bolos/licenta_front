@@ -1,7 +1,9 @@
 import React from "react";
+import PostComment from "./PostComment";
 
 const PostWithComments =({postId,userId,text,timestamp,comments})=>{
-const commentsList=comments.map(comment=><div><p>Ide of user that commented{comment.userId}</p><p>{comment.text}</p> <p>{comment.timestamp}</p></div>)
+const commentsList=comments.map(comment=><PostComment postId={comment.postId} userId={comment.userId} text={comment.text} timestamp={comment.timestamp}/>)
+
     return(
         <div className="card">
             <p>{postId}</p>

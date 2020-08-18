@@ -2,7 +2,7 @@ import React from "react";
 import loginImg from "../login.svg";
 import { ACCESS_TOKEN, USER_ID, USER_NAME } from '../constants';
 import { login } from '../util/ApiUtils';
-import { Dashboard } from "../pages/Dashboard";
+
 
 export class Login extends React.Component {
   constructor(props) {
