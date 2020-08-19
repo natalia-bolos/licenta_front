@@ -58,3 +58,10 @@ export function getMembersOfGroup(groupId){
         method:'GET'
     })
 }
+
+export function getUserPosts(userId){
+    return request({
+        url:API_BASE_URL+"posts/user/"+userId,
+        method:'GET'
+    })
+}
