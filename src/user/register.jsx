@@ -64,11 +64,6 @@ export class Register extends React.Component {
                        onChange={this.handleChange}/>
             </div>
             <div className="form-group">
-              <label htmlFor="phoneNumber">Phone Number:</label>
-              <input type="text" name="email" placeholder="phoneNumber" id="phoneNumber" value={this.state.phoneNumber} 
-                       onChange={this.handleChange}/>
-            </div>
-            <div className="form-group">
               <label htmlFor="password">Password:</label>
               <input type="text" name="password" placeholder="password" id="password" value={this.state.password} 
                        onChange={this.handleChange} />
