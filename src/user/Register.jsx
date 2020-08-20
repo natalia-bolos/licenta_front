@@ -34,6 +34,7 @@ export class Register extends React.Component {
       }).then(response => {
         // localStorage.setItem(ACCESS_TOKEN, response.accessToken);
         console.log("registered ok!");
+        this.props.registerSuccessRedirection();
         // console.log(localStorage.getItem(ACCESS_TOKEN));
     })
   }

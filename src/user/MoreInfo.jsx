@@ -23,9 +23,10 @@ export default class Skills extends React.Component{
           };
     
     }
+
     handleUniversityChange = (event) => {
         this.setState({selectedUniversity:event.target.value}); 
-       };
+    };
 
 
     render(){

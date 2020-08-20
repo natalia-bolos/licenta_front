@@ -19,11 +19,38 @@ import PersonIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import '../UserProfile/styles.css';
-
+import { USER_ID } from '../constants';
+import { getPersonalInfo} from '../util/ApiUtils';
 
 export default class PersonalInfo extends React.Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            moreInfo:{
+                moreUserInfo: {
+                    moreUserInfoId: 1,
+                    userId: 19,
+                    description: "",
+                    university: "",
+                    faculty: "",
+                    year: 4,
+                    city: ""
+                },
+                skills:[],
+                subjects:[],
+                name:"",
+                mail:""
+            } 
+          };
 
+    }
+    componentDidMount() {
+        getPersonalInfo(localStorage.getItem(USER_ID)).then(response=>{
+            this.setState({moreInfo:response})
+        })
+    }
+
+    render() {
         return (
             <div>
                 <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
@@ -46,7 +73,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Name"
-                                    secondary="Natalia Bolos"
+                                    secondary={this.state.moreInfo.name}
                                 />
                             </ListItem>
                             <ListItem>
@@ -55,7 +82,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Email address"
-                                    secondary="natalia_bolos@yahoo.com"
+                                    secondary={this.state.moreInfo.mail}
                                 />
                             </ListItem>
                         </List>
@@ -68,7 +95,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="University"
-                                    secondary="UTCN"
+                                    secondary={this.state.moreInfo.moreUserInfo.university}
                                 />
                             </ListItem>
                             <ListItem>
@@ -77,7 +104,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Faculty"
-                                    secondary="ETTI"
+                                    secondary={this.state.moreInfo.moreUserInfo.faculty}
                                 />
                             </ListItem>
                         </List>
@@ -90,7 +117,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Year of study"
-                                    secondary="4"
+                                    secondary={this.state.moreInfo.moreUserInfo.year}
                                 />
                             </ListItem>
                             <ListItem>
@@ -99,7 +126,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="City"
-                                    secondary="Cluj-Napoca"
+                                    secondary={this.state.moreInfo.moreUserInfo.city}
                                 />
                             </ListItem>
                         </List>

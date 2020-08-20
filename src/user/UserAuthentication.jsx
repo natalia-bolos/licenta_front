@@ -20,6 +20,11 @@ class UserAuthentication extends React.Component {
     this.props.history.push('/dashboard');
   }
 
+  redirectToMoreInfoOnSuccess(){
+    console.log(this.props);
+    this.props.history.push('/moreinfo');
+  }
+
   changeState() {
     const { isLogginActive } = this.state;
 
@@ -45,7 +50,7 @@ class UserAuthentication extends React.Component {
               <Login logInSuccessRedirection={this.redirectToDashboardOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
-              <Register containerRef={ref => (this.current = ref)} />
+              <Register registerSuccessRedirection={this.redirectToMoreInfoOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
             )}
           </div>
           <RightSide

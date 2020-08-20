@@ -65,3 +65,10 @@ export function getUserPosts(userId){
         method:'GET'
     })
 }
+
+export function getPersonalInfo(userId){
+    return request({
+        url:API_BASE_URL+"user/more/"+userId,
+        method:'GET'
+    })
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUserPosts} from '../util/ApiUtils';
 import { USER_ID } from '../constants';
-import {UserPostWithComments} from "../user/UserPostWithComments"
+import UserPostWithComments from "../user/UserPostWithComments"
 import {
     Typography,
     Avatar,
