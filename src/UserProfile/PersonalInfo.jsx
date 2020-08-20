@@ -89,7 +89,7 @@ export default class PersonalInfo extends React.Component {
                                     <LocationOnIcon />
                                 </ListItemIcon>
                                 <ListItemText
-                                    primary="Study year"
+                                    primary="Year of study"
                                     secondary="4"
                                 />
                             </ListItem>

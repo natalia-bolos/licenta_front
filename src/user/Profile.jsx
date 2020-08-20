@@ -23,6 +23,7 @@ import PersonalInfo from '../UserProfile/PersonalInfo';
 import UserPosts from '../UserProfile/UserPosts';
 import Skills from '../UserProfile/Skills';
 import '../UserProfile/styles.css';
+import MoreInfo from '../user/MoreInfo';
  
 export default class User extends React.Component {
   render() {
