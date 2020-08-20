@@ -33,6 +33,7 @@ export default class User extends React.Component {
         <PersonalInfo />
         <Skills />
         <UserPosts />
+        <MoreInfo />
       </div>
     )
   }

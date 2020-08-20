@@ -20,7 +20,7 @@ class Landing extends React.Component{
                               1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
                               and more recently with desktop publishing software like Aldus PageMaker including 
                               versions of Lorem Ipsum.</p>
-                        <Link to='start'>Start learning!</Link>
+                        <Link to='start' className="btn">Start learning!</Link>
                     </div>
                 </div>
             </div>)

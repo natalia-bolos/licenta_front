@@ -78,6 +78,7 @@ export default class Skills extends React.Component{
                     <TextField id="filled-basic" variant="filled" style={{margin:'5px'}}/>
                     <TextField id="filled-basic" variant="filled" style={{margin:'5px'}}/>
                 </div>
+                <p className="btn">Save Info</p>
                 
 
             </div>
