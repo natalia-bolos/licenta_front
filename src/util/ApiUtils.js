@@ -52,6 +52,14 @@ export function getPostsOfGroup(groupId){
     })
 }
 
+export function addPostToGroup(post){
+    return request({
+        url:API_BASE_URL+"posts/group",
+        method: 'POST',
+        body: JSON.stringify(post)
+    })
+}
+
 export function getMembersOfGroup(groupId){
     return request({
         url:API_BASE_URL+"group/members/"+groupId,
