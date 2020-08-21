@@ -19,31 +19,14 @@ import PersonIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import '../UserProfile/styles.css';
-import { USER_ID } from '../constants';
-import { getPersonalInfo} from '../util/ApiUtils';
+
 
 export default class PersonalInfo extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            moreInfo:{
-                moreUserInfo: {
-                    moreUserInfoId: 1,
-                    userId: 19,
-                    description: "",
-                    university: "",
-                    faculty: "",
-                    year: 4,
-                    city: ""
-                },
-                skills:[],
-                subjects:[],
-                name:"",
-                mail:""
-            } 
-          };
-
     }
+   
+
     getInitials = function (string) {
         var names = string.toString().split(' '),
             initials = names[0].substring(0, 1).toUpperCase();
@@ -53,19 +36,14 @@ export default class PersonalInfo extends React.Component {
         }
         return initials;
     }
-    componentDidMount() {
-        getPersonalInfo(localStorage.getItem(USER_ID)).then(response=>{
-            this.setState({moreInfo:response})
-        })
-    }
 
     render() {
         return (
             <div>
                 <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
-                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>{this.getInitials(this.state.moreInfo.name)}</Avatar>
+                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>{this.getInitials(this.props.moreInfo.name)}</Avatar>
                     <Typography variant="h4" >
-                      {this.state.moreInfo.name}
+                      {this.props.moreInfo.name}
                     </Typography>
                 </div>
                 <Divider />
@@ -82,7 +60,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Name"
-                                    secondary={this.state.moreInfo.name}
+                                    secondary={this.props.moreInfo.name}
                                 />
                             </ListItem>
                             <ListItem>
@@ -91,7 +69,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Email address"
-                                    secondary={this.state.moreInfo.mail}
+                                    secondary={this.props.moreInfo.mail}
                                 />
                             </ListItem>
                         </List>
@@ -104,7 +82,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="University"
-                                    secondary={this.state.moreInfo.moreUserInfo.university}
+                                    secondary={this.props.moreInfo.moreUserInfo.university}
                                 />
                             </ListItem>
                             <ListItem>
@@ -113,7 +91,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Faculty"
-                                    secondary={this.state.moreInfo.moreUserInfo.faculty}
+                                    secondary={this.props.moreInfo.moreUserInfo.faculty}
                                 />
                             </ListItem>
                         </List>
@@ -126,7 +104,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Year of study"
-                                    secondary={this.state.moreInfo.moreUserInfo.year}
+                                    secondary={this.props.moreInfo.moreUserInfo.year}
                                 />
                             </ListItem>
                             <ListItem>
@@ -135,7 +113,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="City"
-                                    secondary={this.state.moreInfo.moreUserInfo.city}
+                                    secondary={this.props.moreInfo.moreUserInfo.city}
                                 />
                             </ListItem>
                         </List>

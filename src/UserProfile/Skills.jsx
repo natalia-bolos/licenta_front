@@ -15,21 +15,20 @@ import {
     // CardActions,
     // IconButton
 } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Phone';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-import EmailIcon from '@material-ui/icons/Email';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 export default class Skills extends React.Component{
     render(){
- 
+
+        const skillsList=this.props.skills.map(skill=> <ListItemText key = {skill.skillId} primary = {skill.skillName}/>)
         return (
           <div>
               <Divider />
               <Typography variant="h5" component="h2" style={{margin: '20px'}}>
                 Skills
               </Typography>
-             
+             <List>
+             {skillsList}
+             </List>
           </div>
         );
       }
