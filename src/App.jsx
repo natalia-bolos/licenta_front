@@ -14,16 +14,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      landing:true
-    };
+      loggedIn:false
+    }
+  }
+
+  toggleLoggedIn(){
+    this.setState({loggedIn:!this.state.loggedIn})
   }
 
   render(){
     return (
       <BrowserRouter>
         <div>
-          <Navbar />
-          <Route path="/start" component={UserAuthentication}/>
+          <Navbar loggedIn={this.state.loggedIn} toggleLoggedIn={this.toggleLoggedIn.bind(this)}/>
+          <Route path="/start" render={(props)=><UserAuthentication {...props} toggleLoggedIn={this.toggleLoggedIn.bind(this)}/>}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/moreinfo" component={MoreInfo}/>

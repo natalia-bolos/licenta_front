@@ -47,7 +47,7 @@ class UserAuthentication extends React.Component {
         <div className="login">
           <div className="container_user" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <Login logInSuccessRedirection={this.redirectToDashboardOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
+              <Login toggleLoggedIn={this.props.toggleLoggedIn} logInSuccessRedirection={this.redirectToDashboardOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
               <Register registerSuccessRedirection={this.redirectToMoreInfoOnSuccess.bind(this)} containerRef={ref => (this.current = ref)} />
