@@ -7,6 +7,7 @@ import Profile from './user/Profile'
 import Dashboard  from './pages/Dashboard';
 import MoreInfo from "./user/MoreInfo";
 import "./App.css";
+import "./index.css";
 
 
 class App extends React.Component {

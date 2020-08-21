@@ -4,10 +4,13 @@ import {
     Divider,
     Select,
     MenuItem,
-    TextField
+    Grid,
+    TextField,
+    
 } from '@material-ui/core';
 import {setPersonalInfo} from '../util/ApiUtils';
 import { USER_ID} from '../constants';
+import './moreInfo.css';
 
 export default class MoreInfo extends React.Component{
     constructor(props) {
@@ -116,7 +119,7 @@ export default class MoreInfo extends React.Component{
         }
         console.log(localStorage.getItem(USER_ID));
         setPersonalInfo(localStorage.getItem(USER_ID),completeUserInfo).then(response=>{
-            // aici trebuie o alerta sa am salvat cu bine datele si sa vede spre ce componenta facem redirect
+            // <Alert severity="success">Your registration is complete!</Alert>
             console.log(response);
         })
     }
@@ -126,52 +129,74 @@ export default class MoreInfo extends React.Component{
         const facultiesList=this.state[this.state.selectedUniversity].map(university=><MenuItem key={university} value={university}>{university}</MenuItem>);
         
         return (
-            <div className="container">
-                <Typography>Welcome! </Typography>
-                <Typography>In order to help you connect with other sudents, we would like to get to know you a bit better</Typography>
+            <div className='container more-info'>
+                <p className='wlcm'>Welcome! </p>
+                <p className='txt'>In order to help you connect with other sudents, we would like to get to know you a bit better</p>
                 <Divider />
-                <Typography>Describe yourself in a few words</Typography>
-                <TextField id="description" variant="filled" onChange={this.handleChange.bind(this)}/>
-                <div>
-                    <Typography>University:</Typography>
-                    <Select onChange={this.handleUniversityChange.bind(this)}>
+                <p className='txt'>Describe yourself in a few words</p>
+                <TextField className='description input-boxes' id="description" variant="filled" onChange={this.handleChange.bind(this)}/>
+                <Grid className='algn' container spacing={2}>
+                    <Grid item xs={4}>
+                    <p>University:</p>
+                    <Select className='uni input-boxes' onChange={this.handleUniversityChange.bind(this)}>
                         <MenuItem value={"UTCN"} name={"Technical University of Cluj Napoca"}>Technical University of Cluj Napoca</MenuItem>
                         <MenuItem value={"UBB"} name={"Babes-Bolyai University"}>Babes-Bolyai University</MenuItem>
                         <MenuItem value={"UMF"} name={"Iuliu Hategan University of Medicine and Pharmacy"}>Iuliu Hategan University of Medicine and Pharmacy</MenuItem>
                     </Select>
-                    <Typography>Faculty:</Typography>
-                    <Select onChange={this.handleFacultyChnage.bind(this)}>
+                    </Grid>
+                    <Grid item xs={4}>
+                    <p>Faculty:</p>
+                    <Select className='uni input-boxes' onChange={this.handleFacultyChnage.bind(this)}>
                         {facultiesList}
                     </Select>
+                    </Grid>
                     
-                </div>
-                <Typography>Year of study:</Typography>
-                <Select onChange={this.handleYearChange.bind(this)}>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                    <MenuItem value={4}>4</MenuItem>
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                </Select>
-                <Typography>City</Typography>
-                <TextField id="city" variant="filled" onChange={this.handleChange.bind(this)}/>
+                </Grid>
+                <Grid className='algn ' container spacing={2}>
+                    <Grid item xs={4}>
+                        <p>Year of study:</p>
+                        <Select className='uni input-boxes' onChange={this.handleYearChange.bind(this)}>
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                        </Select>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <p>City:</p>
+                        <TextField className='uni input-boxes' id="city" variant="filled" onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                </Grid>
                 <Divider />
-                <Typography>Your top skills</Typography>
-                <div>
-                    <TextField id="skill1" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="skill2" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="skill3" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="skill4" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="skill5" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="skill6" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                </div>
-                <Typography>Your favourite subjects</Typography>
-                <div>
-                    <TextField id="subject1" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="subject2" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                    <TextField id="subject3" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
-                </div>
+                <p className='txt'>Your top skills</p>
+                <Grid className='algn' container spacing={1}>
+                    <Grid item xs={3}>
+                        <TextField className='input-boxes' id="skill1" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                        <TextField className='input-boxes' id="skill2" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                    <Grid  item xs={3}>   
+                        <TextField className='input-boxes' id="skill3" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                        <TextField className='input-boxes' id="skill4" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                    <Grid  item xs={3}>
+                        <TextField className='input-boxes' id="skill5" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                        <TextField className='input-boxes' id="skill6" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                </Grid>
+                <p className='txt'>Your favourite subjects</p>
+                <Grid container spacing={1}>
+                    <Grid item xs={3}>
+                        <TextField className='input-boxes' id="subject1" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <TextField className='input-boxes' id="subject2" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <TextField className='input-boxes' id="subject3" variant="filled" style={{margin:'5px'}} onChange={this.handleChange.bind(this)}/>
+                    </Grid>
+                </Grid>
                 <p className="btn" onClick={this.handleSubmit.bind(this)}>Save Info</p>
                 
 

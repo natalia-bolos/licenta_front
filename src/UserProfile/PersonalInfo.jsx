@@ -8,12 +8,7 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    // Chip,
-    // Card,
-    // CardMedia,
-    // CardContent,
-    // CardActions,
-    // IconButton
+    IconButton
 } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Phone';
 import EmailIcon from '@material-ui/icons/Email';
