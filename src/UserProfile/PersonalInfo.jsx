@@ -44,6 +44,15 @@ export default class PersonalInfo extends React.Component {
           };
 
     }
+    getInitials = function (string) {
+        var names = string.toString().split(' '),
+            initials = names[0].substring(0, 1).toUpperCase();
+        
+        if (names.length > 1) {
+            initials += names[names.length - 1].substring(0, 1).toUpperCase();
+        }
+        return initials;
+    }
     componentDidMount() {
         getPersonalInfo(localStorage.getItem(USER_ID)).then(response=>{
             this.setState({moreInfo:response})
@@ -54,7 +63,7 @@ export default class PersonalInfo extends React.Component {
         return (
             <div>
                 <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
-                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>NB</Avatar>
+                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>{this.getInitials(this.state.moreInfo.name)}</Avatar>
                     <Typography variant="h4" >
                       {this.state.moreInfo.name}
                     </Typography>

@@ -1,6 +1,6 @@
 import React from "react";
 import loginImg from "../login.svg";
-import { ACCESS_TOKEN, USER_ID, USER_NAME, LOGGEDIN } from '../constants';
+import { ACCESS_TOKEN, USER_ID, USER_NAME,NAME } from '../constants';
 import { login } from '../util/ApiUtils';
 
 
@@ -25,7 +25,7 @@ export class Login extends React.Component {
       localStorage.setItem(ACCESS_TOKEN, response.accessToken);
       localStorage.setItem(USER_ID, response.userId);
       localStorage.setItem(USER_NAME, this.state.username);
-      localStorage.setItem(LOGGEDIN, true);
+      localStorage.setItem(NAME, response.name);
       console.log("logged in ok!");
       this.props.logInSuccessRedirection();
       this.props.toggleLoggedIn();
