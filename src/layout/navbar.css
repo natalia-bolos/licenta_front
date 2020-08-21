@@ -1,3 +1,9 @@
 .brand-logo{
     size: 10px;
+    margin-top: -13px;
+    position: fixed;
+}
+
+.nav-color{
+    background-color: #7a7777;
 }

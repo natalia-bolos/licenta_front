@@ -7,9 +7,9 @@ import './navbar.css';
 
 const Navbar = () => {
     return(
-        <nav className='nav-wrapper grey'>
+        <nav className='nav-wrapper nav-color'>
             <div className='container'>
-                <Link to='/' className="brand-logo"><img src={logo} alt="Logo" /></Link>
+                <Link to='/' className="brand-logo" ><img src={logo} alt="Logo" /></Link>
                 <SignedInLink />
                 <SignedOutLink />
             </div>

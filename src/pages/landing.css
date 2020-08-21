@@ -1,8 +1,44 @@
 .landimg{
     align-content: center;
+    margin-top: 0px;
+    z-index: 1;
+    position:relative ;
 }
 
 .landtxt{
     text-align: center;
+    margin-top: 150px;
+    color: white;
+    z-index: 1;
+    position:relative ;
+    
+}
+
+.land-btn{
+    margin-top: 20px;
+    z-index: 1;
+    position:relative ;
+}
+
+.land{
+    margin-top: 100px;
+    background-color: #7a7777;
+    width: 1500px;
+    height: 600px;
+    border-radius: 25px;
+    position:relative ;
+    z-index: 2;
+}
+
+.Back{
+    background-image: url('../pages/294.jpg'); 
+    /* background-color: #ebcc1e; */
+    z-index: 1;
+    position: absolute; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 100%;
     
 }
