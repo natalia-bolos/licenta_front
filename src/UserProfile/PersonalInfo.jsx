@@ -56,7 +56,7 @@ export default class PersonalInfo extends React.Component {
                 <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
                     <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>NB</Avatar>
                     <Typography variant="h4" >
-                        Natalia Bolos
+                      {this.state.moreInfo.name}
                     </Typography>
                 </div>
                 <Divider />
