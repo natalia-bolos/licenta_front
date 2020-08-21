@@ -72,3 +72,11 @@ export function getPersonalInfo(userId){
         method:'GET'
     })
 }
+
+export function setPersonalInfo(userId,userInfo){
+    return request({
+        url:API_BASE_URL+"user/more/"+userId,
+        method: 'POST',
+        body: JSON.stringify(userInfo)
+    })
+}

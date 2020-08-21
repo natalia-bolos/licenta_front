@@ -25,7 +25,7 @@ import Skills from '../UserProfile/Skills';
 import '../UserProfile/styles.css';
 import MoreInfo from '../user/MoreInfo';
  
-export default class User extends React.Component {
+export default class Profile extends React.Component {
   render() {
 
     return (
