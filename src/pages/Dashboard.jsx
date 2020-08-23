@@ -6,7 +6,6 @@ import {GroupData} from "../groups/GroupData";
 import {GroupMembers} from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
 
-
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
