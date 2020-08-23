@@ -1,11 +1,11 @@
 import React from "react";
 import { GroupList } from "../groups/GroupList";
 import { USER_NAME,USER_ID } from '../constants';
-import { getPostsOfGroup, getMembersOfGroup } from '../util/ApiUtils';
+import { getPostsOfGroup, getMembersOfGroup,getGroupsOfUser,addPostToGroup } from '../util/ApiUtils';
 import {GroupData} from "../groups/GroupData";
 import {GroupMembers} from "../groups/GroupMembers";
-import Textimp from '../groups/Textimput';
-import { addPostToGroup } from "../util/ApiUtils"
+import Textimput from '../groups/Textimput';
+
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -13,10 +13,18 @@ export default class Dashboard extends React.Component {
         this.state = {
             selectedGroupName: "",
             selectedGroupId: 0,
+            groups:[],
             posts:[],
             members:[]
           };
 
+    }
+
+    componentDidMount() {
+        getGroupsOfUser(localStorage.getItem(USER_ID)).then(response=>{
+            this.setState({groups:response})
+            this.setSelectedGroup(response[0].groupId,response[0].name);
+        })
     }
 
     setSelectedGroup(selectedGroup,selectedGroupName){
@@ -50,11 +58,11 @@ export default class Dashboard extends React.Component {
                 <div className="row">
                     <h1>Hello, {localStorage.getItem(USER_NAME)}</h1>
                     <div className="col s2 ">
-                        <GroupList  onGroupClicked={this.setSelectedGroup.bind(this)}/>
+                        <GroupList  groups={this.state.groups} onGroupClicked={this.setSelectedGroup.bind(this)}/>
                     </div>
                     <div className="col s8">
                         <GroupData groupName={this.state.selectedGroupName} posts={this.state.posts}/>
-                        <Textimp createNewPost={this.createNewPost.bind(this)}/>
+                        <Textimput createNewPost={this.createNewPost.bind(this)}/>
 
                     </div>
                     <div className="col s2">

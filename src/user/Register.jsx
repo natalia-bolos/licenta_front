@@ -10,7 +10,8 @@ export class Register extends React.Component {
       username:"",
       email:"",
       password:"",
-      phoneNumber:""
+      phoneNumber:"",
+      errorMessage:""
     };
 
     this.signUpApiCallOnClick=this.signUpApiCallOnClick.bind(this);
@@ -36,7 +37,11 @@ export class Register extends React.Component {
         console.log("registered ok!");
         this.props.registerSuccessRedirection();
         // console.log(localStorage.getItem(ACCESS_TOKEN));
-    })
+    }).catch(error => {
+      if(error.success === false) {
+        this.setState({errorMessage:error.message})
+      }                   
+    });
   }
 
   
@@ -69,7 +74,7 @@ export class Register extends React.Component {
               <input type="text" name="password" placeholder="password" id="password" value={this.state.password} 
                        onChange={this.handleChange} />
             </div>
-            
+            <p style={{ color: 'red' }}>{this.state.errorMessage}</p>
           </div>
         </div>
         <div className="footer">

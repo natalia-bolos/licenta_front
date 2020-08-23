@@ -1,6 +1,6 @@
 import React from "react";
 import loginImg from "../login.svg";
-import { ACCESS_TOKEN, USER_ID, USER_NAME,NAME } from '../constants';
+import { ACCESS_TOKEN, USER_ID, USER_NAME, NAME } from '../constants';
 import { login } from '../util/ApiUtils';
 
 
@@ -10,11 +10,11 @@ export class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      loggedIn: false
+      errorMessage: ""
     };
     this.loginApiCallOnClick = this.loginApiCallOnClick.bind(this);
   }
-  
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -30,7 +30,11 @@ export class Login extends React.Component {
       console.log("logged in ok!");
       this.props.logInSuccessRedirection();
       this.props.toggleLoggedIn();
-    })
+    }).catch(error => {
+      if(error.status === 401) {
+        this.setState({errorMessage:"Username or password are incorrect!"})
+      }                   
+    });
   }
   render() {
     return (
@@ -51,6 +55,7 @@ export class Login extends React.Component {
               <input type="password" name="password" placeholder="password" id="password" value={this.state.password}
                 onChange={this.handleChange} />
             </div>
+            <p style={{ color: 'red' }}>{this.state.errorMessage}</p>
           </div>
         </div>
         <div className="footer">
