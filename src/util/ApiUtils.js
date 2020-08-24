@@ -45,6 +45,14 @@ export function getGroupsOfUser(userId){
     })
 }
 
+export function createGroup(group){
+    return request({
+        url:API_BASE_URL+"group/new",
+        method: 'POST',
+        body: JSON.stringify(group)
+    })
+}
+
 export function getPostsOfGroup(groupId){
     return request({
         url:API_BASE_URL+"posts/group/"+groupId,
@@ -88,3 +96,4 @@ export function setPersonalInfo(userId,userInfo){
         body: JSON.stringify(userInfo)
     })
 }
+
