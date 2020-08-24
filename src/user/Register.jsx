@@ -34,8 +34,6 @@ export class Register extends React.Component {
       "phoneNumber": this.state.phoneNumber
 
     }).then(response => {
-      // localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-      console.log(response);
       if (response.success) {
 
         login({ "usernameOrEmail": this.state.username, "password": this.state.password }).then(response => {
@@ -43,7 +41,6 @@ export class Register extends React.Component {
           localStorage.setItem(USER_ID, response.userId);
           localStorage.setItem(USER_NAME, this.state.username);
           localStorage.setItem(NAME, response.name);
-          console.log(response);
           this.props.toggleLoggedIn();
           this.props.registerSuccessRedirection();
         })
