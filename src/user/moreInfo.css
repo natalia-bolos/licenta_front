@@ -9,11 +9,18 @@
 .algn{
     display: flex;
     align-items: center;
+    margin-left: 140px;
 }
 
 .uni{
     width: 300px;
+    margin-left: 140px;
 }
+
+.skill{
+    padding-left: 140px;
+}
+
 
 .description{
     width: 1000px;

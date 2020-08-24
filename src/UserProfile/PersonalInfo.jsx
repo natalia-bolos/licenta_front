@@ -10,9 +10,11 @@ import {
     ListItemText,
     IconButton
 } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Phone';
+import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import SchoolIcon from '@material-ui/icons/School';
+import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import '../UserProfile/styles.css';
 
 
@@ -36,7 +38,7 @@ export default class PersonalInfo extends React.Component {
         return (
             <div>
                 <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
-                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#' }}>{this.getInitials(this.props.moreInfo.name)}</Avatar>
+                    <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#FBC410' }}>{this.getInitials(this.props.moreInfo.name)}</Avatar>
                     <Typography variant="h4" >
                       {this.props.moreInfo.name}
                     </Typography>
@@ -73,7 +75,7 @@ export default class PersonalInfo extends React.Component {
                         <List>
                             <ListItem>
                                 <ListItemIcon>
-                                    <LocationOnIcon />
+                                    <SchoolIcon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="University"
@@ -82,7 +84,7 @@ export default class PersonalInfo extends React.Component {
                             </ListItem>
                             <ListItem>
                                 <ListItemIcon>
-                                    <EmailIcon />
+                                    <SchoolIcon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Faculty"
@@ -95,7 +97,7 @@ export default class PersonalInfo extends React.Component {
                         <List>
                             <ListItem>
                                 <ListItemIcon>
-                                    <LocationOnIcon />
+                                    <HourglassEmptyIcon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="Year of study"
