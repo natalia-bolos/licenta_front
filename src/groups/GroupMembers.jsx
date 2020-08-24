@@ -6,7 +6,7 @@ export class GroupMembers extends React.Component {
         
     }
     render() {
-        const postList=this.props.members.map(member=><div><p>{member.username}</p><p>{member.userId}</p></div>)
+        const postList=this.props.members.map(member=><div key={member.userId}><p>{member.username}</p><p>{member.userId}</p></div>)
         return (
             <div>
                 <h5>Group Memebers</h5>

@@ -4,7 +4,7 @@ import {
     ListItem, ListItemText, List
 } from '@material-ui/core'
 const PostWithComments = ({ postId, userId, username, text, timestamp, comments }) => {
-    const commentsList = comments.map(comment => <PostComment postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
+    const commentsList = comments.map(comment => <PostComment key={comment.groupPostCommentId} postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
 
     return (
         <React.Fragment>

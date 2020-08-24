@@ -27,7 +27,7 @@ class textimp extends React.Component {
                     <div className="row txtimp">
                         <div className="input-field col s10">
                             <textarea id="post" className="materialize-textarea" onChange={this.handleChange.bind(this)}></textarea>
-                            <label for="post">New post</label>
+                            <label htmlFor="post">New post</label>
                         </div>
                         <div className="btn file-field input-field col s1">
                             <span>File</span>

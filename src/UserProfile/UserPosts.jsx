@@ -4,13 +4,13 @@ import { USER_ID } from '../constants';
 import UserPostWithComments from "../user/UserPostWithComments"
 import {
     Typography,
-    Avatar,
+    // Avatar,
     Divider,
-    Grid,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
+    // Grid,
+    // List,
+    // ListItem,
+    // ListItemIcon,
+    // ListItemText,
     // Chip,
     // Card,
     // CardMedia,
@@ -18,10 +18,10 @@ import {
     // CardActions,
     // IconButton
 } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Phone';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-import EmailIcon from '@material-ui/icons/Email';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+// import PersonIcon from '@material-ui/icons/Phone';
+// import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
+// import EmailIcon from '@material-ui/icons/Email';
+// import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 export default class UserPosts extends React.Component{
 
