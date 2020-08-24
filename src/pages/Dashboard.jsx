@@ -22,7 +22,11 @@ export default class Dashboard extends React.Component {
     componentDidMount() {
         getGroupsOfUser(localStorage.getItem(USER_ID)).then(response=>{
             this.setState({groups:response})
-            this.setSelectedGroup(response[0].groupId,response[0].name);
+            if (response !== undefined && response.length != 0) {
+                this.setSelectedGroup(response[0].groupId,response[0].name);
+            }
+            
+            
         })
     }
 
