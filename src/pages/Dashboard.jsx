@@ -70,7 +70,7 @@ export default class Dashboard extends React.Component {
         return (
             <div className="dashboard container">
                 <div className="row">
-                    <h1>Hello, {localStorage.getItem(USER_NAME)}</h1>
+                    <h4>Hello, {localStorage.getItem(USER_NAME)}</h4>
                     <div className="col s2 ">
                         <GroupList   groups={this.state.groups} onGroupClicked={this.setSelectedGroup.bind(this)}/>
                         <CreateGroup createNewGroup={this.createNewGroup.bind(this)} />

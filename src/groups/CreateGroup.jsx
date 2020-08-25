@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Modal, Button, TextField, Select, MenuItem } from '@material-ui/core';
 import { USER_ID } from '../constants';
+import "./creategroup.css"
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -91,7 +92,7 @@ export default function CreateGroup({createNewGroup}) {
 
     return (
         <div>
-            <Button variant="contained" onClick={handleOpen}> Create Group</Button>
+            <Button className="fixedbutton" variant="contained" onClick={handleOpen}> Create Group</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

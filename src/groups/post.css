@@ -1,0 +1,19 @@
+.post{
+    font-family: 'Playfair Display', serif;
+}
+
+.usr{
+    font-size: small;
+    font-weight: 400;
+}
+
+.post-text{
+    font-size: medium;
+    font-weight: 300;
+}
+
+.times{
+    font-size: x-small;
+    font-weight: 200;
+    margin-left: 470px;
+}

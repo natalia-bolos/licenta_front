@@ -1,4 +1,9 @@
 import React from 'react';
+import{
+    TextField, Grid,
+    Button
+} from '@material-ui/core';
+import "./textinput.css";
 
 
 class textimp extends React.Component {
@@ -19,10 +24,26 @@ class textimp extends React.Component {
         this.props.createNewPost(this.state.post);
     }
     
+    
 
     render() {
         return (
-            <div className="row">
+            <div>
+                <Grid container>
+                    <Grid item xs={8}>
+                        <form  noValidate autoComplete="off">
+                        <TextField className='inp input-boxes' id="post" placeholder="New post" variant="filled" onChange={this.handleChange.bind(this)} />
+                        </form>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button className="sfbtn" variant="contained" onClick={this.createPost.bind(this)}>Send</Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button className="sfbtn" variant="contained" >File</Button>
+                    </Grid>
+                </Grid>
+
+            {/* <div className="row">
                 <form className="col s12">
                     <div className="row txtimp">
                         <div className="input-field col s10">
@@ -38,6 +59,7 @@ class textimp extends React.Component {
                         </div>
                     </div>
                 </form>
+            </div> */}
             </div>
         )
     }

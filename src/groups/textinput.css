@@ -1,0 +1,19 @@
+.inp{
+    width: 550px;
+}
+
+.sfbtn{
+    width: 70px;
+    margin: 0;
+    padding: 6px 12px;
+    
+}
+
+.input-box:hover{
+    box-shadow: 0px 0px 14px 0.3px #FBC410;
+}
+
+.input-box:focus{       
+outline: none;
+box-shadow: 0px 0px 12px 0.8px #FBC410;
+}

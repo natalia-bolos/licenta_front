@@ -15,9 +15,11 @@ export class GroupList extends Component {
         const groupList = this.props.groups.map(group => <GroupComponent onGroupClicked={this.props.onGroupClicked} key={group.groupId} id={group.groupId} name={group.name} type={group.type} description={group.description} />)
         return (
             <div>
+                <p>Your groups:</p>
                 <List>
                     {groupList}
                 </List>
+                
             </div>
         );
     }

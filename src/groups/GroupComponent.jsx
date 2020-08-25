@@ -1,15 +1,21 @@
 import React from "react";
 import {
-    ListItem, ListItemText
+    ListItem, ListItemText, Divider
 } from '@material-ui/core'
+import "./groupcomponent.css"
+
 const GroupComponent =({id,name,type,description,onGroupClicked})=>{
     return(
-        <ListItem onClick={()=>onGroupClicked(id,name)}>
+        <div className="grouptext">
+            <ListItem onClick={()=>onGroupClicked(id,name)}>
             <ListItemText
-            primary={<h4>{name}</h4>}
+            primary={<h5>{name}</h5>}
             secondary={description}
             />
         </ListItem>
+        <Divider />
+        </div>
+        
     )
 };
 
