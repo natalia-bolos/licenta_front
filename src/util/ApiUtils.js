@@ -53,6 +53,14 @@ export function createGroup(group){
     })
 }
 
+export function joinGroup(group){
+    return request({
+        url:API_BASE_URL+"group/join",
+        method: 'POST',
+        body: JSON.stringify(group)
+    })
+}
+
 export function getPostsOfGroup(groupId){
     return request({
         url:API_BASE_URL+"posts/group/"+groupId,
@@ -85,6 +93,20 @@ export function getUserPosts(userId){
 export function getPersonalInfo(userId){
     return request({
         url:API_BASE_URL+"user/more/"+userId,
+        method:'GET'
+    })
+}
+
+export function getGroupsByName(name){
+    return request({
+        url:API_BASE_URL+"group/name"+name,
+        method:'GET'
+    })
+}
+
+export function getAllGroups(){
+    return request({
+        url:API_BASE_URL+"group",
         method:'GET'
     })
 }

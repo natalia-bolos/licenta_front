@@ -1,11 +1,12 @@
 import React from "react";
 import { GroupList } from "../groups/GroupList";
 import { USER_NAME, USER_ID } from '../constants';
-import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup } from '../util/ApiUtils';
+import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup } from '../util/ApiUtils';
 import { GroupData } from "../groups/GroupData";
 import { GroupMembers } from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
 import CreateGroup from '../groups/CreateGroup';
+import JoinGroup from "../groups/JoinGroup";
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +15,8 @@ export default class Dashboard extends React.Component {
             selectedGroupId: 0,
             groups: [],
             posts: [],
-            members: []
+            members: [],
+            allGroups: []
         };
 
     }
@@ -33,9 +35,10 @@ export default class Dashboard extends React.Component {
     setSelectedGroup(selectedGroup, selectedGroupName) {
         Promise.all([
             getPostsOfGroup(selectedGroup),
-            getMembersOfGroup(selectedGroup)
-        ]).then(([retreivedPosts, retreivedMembers]) => {
-            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup });
+            getMembersOfGroup(selectedGroup),
+            getAllGroups()
+        ]).then(([retreivedPosts, retreivedMembers, retreivedGroups]) => {
+            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups });
         })
     }
 
@@ -47,6 +50,21 @@ export default class Dashboard extends React.Component {
                 name: response.name,
                 type: response.type,
                 description: response.description
+            })
+            this.setState({ groups: existingGroups });
+            console.log("created");
+        })
+    }
+
+    joinGroup(group) {
+        joinGroup({ groupId: group.groupId, userId: group.userId }).then(response => {
+            console.log(response);
+            var existingGroups = this.state.groups;
+            existingGroups.push({
+                groupId: group.groupId,
+                name: group.name,
+                type: group.type,
+                description: group.description
             })
             this.setState({ groups: existingGroups });
             console.log("created");
@@ -77,6 +95,7 @@ export default class Dashboard extends React.Component {
                     <div className="col s2 ">
                         <GroupList groups={this.state.groups} onGroupClicked={this.setSelectedGroup.bind(this)} />
                         <CreateGroup createNewGroup={this.createNewGroup.bind(this)} />
+                        <JoinGroup joinGroup={this.joinGroup.bind(this)} allGroups={this.state.allGroups} />
                     </div>
 
                     <div className="col s8">
