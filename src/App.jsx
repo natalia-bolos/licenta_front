@@ -30,7 +30,7 @@ class App extends React.Component {
           <Navbar loggedIn={this.state.loggedIn} toggleLoggedIn={this.toggleLoggedIn.bind(this)}/>
           <Route path="/start" render={(props)=><UserAuthentication {...props} toggleLoggedIn={this.toggleLoggedIn.bind(this)}/>}/>
           <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/profile" component={Profile}/>
+          <Route path="/profile/:userId" component={Profile}/>
           <Route path="/moreinfo" component={MoreInfo}/>
           <Route exact path="/" component={Landing}/>
         </div> 

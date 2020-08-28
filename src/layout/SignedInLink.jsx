@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import { NAME } from '../constants';
+import { NAME, USER_ID } from '../constants';
 
 
 const SignedInLink = ({toggleLoggedIn}) => {
@@ -14,10 +14,10 @@ const SignedInLink = ({toggleLoggedIn}) => {
         return initials;
     };
     const initials=getInitials(localStorage.getItem(NAME));
-
+    const linkToMyPage='/profile/'+localStorage.getItem(USER_ID);
     return(
         <ul className="right">
-            <li><NavLink to='/profile'  className='btn-floating btn-medium yellow darken-1'>{initials}</NavLink></li>
+            <li><NavLink to={linkToMyPage}  className='btn-floating btn-medium yellow darken-1'>{initials}</NavLink></li>
             <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
             <li><NavLink to='/' onClick={toggleLoggedIn}>Log Out</NavLink></li>
         </ul>

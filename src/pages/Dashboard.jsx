@@ -7,6 +7,7 @@ import { GroupMembers } from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
 import CreateGroup from '../groups/CreateGroup';
 import JoinGroup from "../groups/JoinGroup";
+
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
@@ -27,8 +28,6 @@ export default class Dashboard extends React.Component {
             if (response !== undefined && response.length != 0) {
                 this.setSelectedGroup(response[0].groupId, response[0].name);
             }
-
-
         })
     }
 
@@ -87,6 +86,10 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    handleProfileClick(userId) {
+        this.props.history.push('/profile/' + userId);
+    }
+    
     render() {
         return (
             <div className="dashboard container">
@@ -103,7 +106,7 @@ export default class Dashboard extends React.Component {
                         <Textimput createNewPost={this.createNewPost.bind(this)} />
                     </div>
                     <div className="col s2">
-                        <GroupMembers members={this.state.members} />
+                        <GroupMembers seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
                     </div>
                 </div>
             </div>)

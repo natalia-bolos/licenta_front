@@ -57,9 +57,7 @@ export default function JoinGroup({ allGroups,joinGroup }) {
     return (
         <div>
             <Button className="fixedbutton" variant="contained" onClick={handleOpen}> Join Group</Button>
-
             {body}
-
         </div>
     );
 }

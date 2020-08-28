@@ -17,7 +17,6 @@ export class GroupData extends React.Component {
                <h6>{this.props.groupName}</h6>
                 <List>
                     {postList}
-                    
                 </List>
             </Paper>
         )

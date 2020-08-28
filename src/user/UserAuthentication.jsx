@@ -16,12 +16,12 @@ class UserAuthentication extends React.Component {
   }
 
   redirectToDashboardOnSuccess(){
-    console.log(this.props);
+    // console.log(this.props);
     this.props.history.push('/dashboard');
   }
 
   redirectToMoreInfoOnSuccess(){
-    console.log(this.props);
+    // console.log(this.props);
     this.props.history.push('/moreinfo');
   }
 
