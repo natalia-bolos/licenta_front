@@ -1,7 +1,7 @@
 import React from "react";
 import { GroupList } from "../groups/GroupList";
 import { USER_NAME, USER_ID } from '../constants';
-import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup } from '../util/ApiUtils';
+import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup, addFile } from '../util/ApiUtils';
 import { GroupData } from "../groups/GroupData";
 import { GroupMembers } from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
@@ -70,26 +70,48 @@ export default class Dashboard extends React.Component {
         })
     }
 
-    createNewPost(text) {
+    createNewPost(text, file) {
         var postToAdd = { groupId: this.state.selectedGroupId, userId: localStorage.getItem(USER_ID), text: text }
+
         addPostToGroup(postToAdd).then(response => {
             var posted = this.state.posts;
-            posted.push({
-                postId: response.groupPostId,
-                userId: response.userId,
-                username: localStorage.getItem(USER_NAME),
-                text: response.text,
-                timestamp: response.timestamp,
-                comments: []
-            })
-            this.setState({ posts: posted });
+            if (file != '') {
+                addFile(response.groupPostId, file).then(attachmentResponse => {
+                    attachmentResponse.json().then(jasonValue=>{console.log(jasonValue)
+                        posted.push({
+                            postId: response.groupPostId,
+                            userId: response.userId,
+                            username: localStorage.getItem(USER_NAME),
+                            text: response.text,
+                            timestamp: response.timestamp,
+                            comments: [],
+                            attachments:[jasonValue]
+                        })
+                        this.setState({ posts: posted });
+                    })
+                   
+                })
+            }
+            
+            else {
+                posted.push({
+                    postId: response.groupPostId,
+                    userId: response.userId,
+                    username: localStorage.getItem(USER_NAME),
+                    text: response.text,
+                    timestamp: response.timestamp,
+                    comments: [],
+                    attachments:[]
+                })
+                this.setState({ posts: posted });
+            }
         })
     }
 
     handleProfileClick(userId) {
         this.props.history.push('/profile/' + userId);
     }
-    
+
     render() {
         return (
             <div className="dashboard container">

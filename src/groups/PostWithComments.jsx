@@ -4,13 +4,15 @@ import {
     ListItem, ListItemText, List, Divider
 } from '@material-ui/core';
 import "./post.css" 
+import Attachment from "./Attachment";
 
 
-const PostWithComments = ({ postId, userId, username, text, timestamp, comments }) => {
+const PostWithComments = ({ postId, userId, username, text, timestamp, comments, attachments }) => {
+   
     const commentsList = comments.map(comment => <PostComment key={comment.groupPostCommentId} postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
-
+    const attachmentList=attachments.map(attachment=><Attachment attachment={attachment} />);
     return (
-        <React.Fragment className="post">
+        <React.Fragment key={postId} className="post">
             <ListItem>
                 <ListItemText
                     primary={<p className="usr"><b>{username}</b></p>}
@@ -18,9 +20,13 @@ const PostWithComments = ({ postId, userId, username, text, timestamp, comments 
                         <p className="times">{timestamp}</p></div>}
                 />
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
                 {<List>{commentsList}</List>}
-            </ListItem>
+            </ListItem> */}
+            <List>
+                {attachmentList}
+            </List>
+
             <Divider />
         </React.Fragment>
     )

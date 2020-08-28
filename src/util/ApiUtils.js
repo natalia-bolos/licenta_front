@@ -119,3 +119,26 @@ export function setPersonalInfo(userId,userInfo){
     })
 }
 
+export function addFile(postId,file){
+    var data = new FormData();
+    data.append("file",file);
+    return fetch(API_BASE_URL+"uploadFile/post/group/"+postId,{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
+        },
+        body: data
+      }
+    )     
+}
+
+export function getGroupFile(attachmentId){
+    return fetch(API_BASE_URL+"downloadFile/group/"+attachmentId,{
+        method: "GET",
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN)
+        }
+      })
+}
+
