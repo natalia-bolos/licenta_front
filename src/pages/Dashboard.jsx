@@ -1,12 +1,13 @@
 import React from "react";
 import { GroupList } from "../groups/GroupList";
 import { USER_NAME, USER_ID } from '../constants';
-import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup, addFile } from '../util/ApiUtils';
+import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup, addFile, addMembership } from '../util/ApiUtils';
 import { GroupData } from "../groups/GroupData";
 import { GroupMembers } from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
 import CreateGroup from '../groups/CreateGroup';
 import JoinGroup from "../groups/JoinGroup";
+import AddMembers from "../groups/AddMembers";
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             selectedGroupName: "",
             selectedGroupId: 0,
+            isAdminOrCreator:false,
             groups: [],
             posts: [],
             members: [],
@@ -31,13 +33,20 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    isLoggedUserAdminOrCreator(membersOfCurrentGroup){
+        var roleName=membersOfCurrentGroup.filter(member => {
+            return member.userId == localStorage.getItem(USER_ID);
+          });
+          return roleName[0].role.name==="ROLE_CREATOR" || roleName==="ROLE_ADMIN"
+    }
+
     setSelectedGroup(selectedGroup, selectedGroupName) {
         Promise.all([
             getPostsOfGroup(selectedGroup),
             getMembersOfGroup(selectedGroup),
             getAllGroups()
         ]).then(([retreivedPosts, retreivedMembers, retreivedGroups]) => {
-            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups });
+            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups,isAdminOrCreator:this.isLoggedUserAdminOrCreator(retreivedMembers) });
         })
     }
 
@@ -108,9 +117,23 @@ export default class Dashboard extends React.Component {
         })
     }
 
+    addUserToGroup(user,role){
+            addMembership({
+                groupId:this.state.selectedGroupId,
+                userId:user.userId,
+                roleId:role.id
+            }).then(response=>{
+                var currentMembers= this.state.members;
+                currentMembers.push(user);
+                this.setState({members:currentMembers});
+            })
+    }
+
     handleProfileClick(userId) {
         this.props.history.push('/profile/' + userId);
     }
+
+    
 
     render() {
         return (
@@ -129,6 +152,7 @@ export default class Dashboard extends React.Component {
                     </div>
                     <div className="col s2">
                         <GroupMembers seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
+                       {this.state.isAdminOrCreator?<AddMembers addUserToGroup={this.addUserToGroup.bind(this)} />:<div></div>} 
                     </div>
                 </div>
             </div>)

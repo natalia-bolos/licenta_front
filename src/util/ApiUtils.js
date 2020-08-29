@@ -111,11 +111,26 @@ export function getAllGroups(){
     })
 }
 
+export function getUsersByName(name){
+    return request({
+        url:API_BASE_URL+"user/name/"+name,
+        method:'GET'
+    })
+}
+
 export function setPersonalInfo(userId,userInfo){
     return request({
         url:API_BASE_URL+"user/more/"+userId,
         method: 'POST',
         body: JSON.stringify(userInfo)
+    })
+}
+
+export function addMembership(membership){
+    return request({
+        url:API_BASE_URL+"user/add",
+        method: 'POST',
+        body: JSON.stringify(membership)
     })
 }
 
