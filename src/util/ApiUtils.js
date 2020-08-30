@@ -134,6 +134,13 @@ export function addMembership(membership){
     })
 }
 
+export function updateMembership(membership){
+    return request({
+        url:API_BASE_URL+"group/membership",
+        method: 'POST',
+        body: JSON.stringify(membership)
+    })
+}
 export function addFile(postId,file){
     var data = new FormData();
     data.append("file",file);

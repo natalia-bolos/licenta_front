@@ -7,7 +7,6 @@ export default function AddMembers({ addUserToGroup }) {
     const [user, setUser] = React.useState({});
     const [users, setUsers] = React.useState([]);
     const [name, setName] = React.useState('');
-    const [description, setDescription] = React.useState('');
     const [user_role] = React.useState({ id: 1, name: "User" });
     const [admin_role] = React.useState({ id: 2, name: "Admin" });
     const [role,setRole] = React.useState(user_role);
@@ -17,8 +16,6 @@ export default function AddMembers({ addUserToGroup }) {
     };
 
     const handleClose = () => {
-        setName('');
-        setDescription('');
         setOpen(false);
     };
 

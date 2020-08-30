@@ -1,7 +1,7 @@
 import React from "react";
 import { GroupList } from "../groups/GroupList";
 import { USER_NAME, USER_ID } from '../constants';
-import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup, addFile, addMembership } from '../util/ApiUtils';
+import { getPostsOfGroup, getMembersOfGroup, getGroupsOfUser, addPostToGroup, createGroup, getAllGroups, joinGroup, addFile, addMembership, updateMembership } from '../util/ApiUtils';
 import { GroupData } from "../groups/GroupData";
 import { GroupMembers } from "../groups/GroupMembers";
 import Textimput from '../groups/Textimput';
@@ -15,7 +15,7 @@ export default class Dashboard extends React.Component {
         this.state = {
             selectedGroupName: "",
             selectedGroupId: 0,
-            isAdminOrCreator:false,
+            isAdminOrCreator: false,
             groups: [],
             posts: [],
             members: [],
@@ -33,11 +33,11 @@ export default class Dashboard extends React.Component {
         })
     }
 
-    isLoggedUserAdminOrCreator(membersOfCurrentGroup){
-        var roleName=membersOfCurrentGroup.filter(member => {
+    isLoggedUserAdminOrCreator(membersOfCurrentGroup) {
+        var user = membersOfCurrentGroup.filter(member => {
             return member.userId == localStorage.getItem(USER_ID);
-          });
-          return roleName[0].role.name==="ROLE_CREATOR" || roleName==="ROLE_ADMIN"
+        });
+        return user[0].role.name == "ROLE_CREATOR" || user[0].role.name == "ROLE_ADMIN"
     }
 
     setSelectedGroup(selectedGroup, selectedGroupName) {
@@ -46,7 +46,7 @@ export default class Dashboard extends React.Component {
             getMembersOfGroup(selectedGroup),
             getAllGroups()
         ]).then(([retreivedPosts, retreivedMembers, retreivedGroups]) => {
-            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups,isAdminOrCreator:this.isLoggedUserAdminOrCreator(retreivedMembers) });
+            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups, isAdminOrCreator: this.isLoggedUserAdminOrCreator(retreivedMembers) });
         })
     }
 
@@ -86,7 +86,8 @@ export default class Dashboard extends React.Component {
             var posted = this.state.posts;
             if (file != '') {
                 addFile(response.groupPostId, file).then(attachmentResponse => {
-                    attachmentResponse.json().then(jasonValue=>{console.log(jasonValue)
+                    attachmentResponse.json().then(jasonValue => {
+                        console.log(jasonValue)
                         posted.push({
                             postId: response.groupPostId,
                             userId: response.userId,
@@ -94,14 +95,14 @@ export default class Dashboard extends React.Component {
                             text: response.text,
                             timestamp: response.timestamp,
                             comments: [],
-                            attachments:[jasonValue]
+                            attachments: [jasonValue]
                         })
                         this.setState({ posts: posted });
                     })
-                   
+
                 })
             }
-            
+
             else {
                 posted.push({
                     postId: response.groupPostId,
@@ -110,30 +111,58 @@ export default class Dashboard extends React.Component {
                     text: response.text,
                     timestamp: response.timestamp,
                     comments: [],
-                    attachments:[]
+                    attachments: []
                 })
                 this.setState({ posts: posted });
             }
         })
     }
 
-    addUserToGroup(user,role){
-            addMembership({
-                groupId:this.state.selectedGroupId,
-                userId:user.userId,
-                roleId:role.id
-            }).then(response=>{
-                var currentMembers= this.state.members;
-                currentMembers.push(user);
-                this.setState({members:currentMembers});
+    addUserToGroup(user, role) {
+        addMembership({
+            groupId: this.state.selectedGroupId,
+            userId: user.userId,
+            roleId: role.id
+        }).then(() => {
+            var currentMembers = this.state.members;
+            currentMembers.push(user);
+            this.setState({ members: currentMembers });
+        })
+    }
+
+    updateMembership(membership) {
+        console.log(membership);
+        updateMembership(membership).then(() => {
+            const roles = [
+                {
+                    roleId: 1,
+                    name: "ROLE_USER"
+                },
+                {
+                    roleId: 2,
+                    name: "ROLE_ADMIN"
+                },
+                {
+                    roleId: 3,
+                    name: "ROLE_CREATOR"
+                }
+            ]
+            var currentMembers = this.state.members;
+            currentMembers.forEach(member=>{
+                if(member.userId==membership.userId){
+                    member.role=roles[membership.roleId-1];
+                }
             })
+            this.setState({members:currentMembers});
+            console.log("updated");
+        })
     }
 
     handleProfileClick(userId) {
         this.props.history.push('/profile/' + userId);
     }
 
-    
+
 
     render() {
         return (
@@ -151,8 +180,8 @@ export default class Dashboard extends React.Component {
                         <Textimput createNewPost={this.createNewPost.bind(this)} />
                     </div>
                     <div className="col s2">
-                        <GroupMembers seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
-                       {this.state.isAdminOrCreator?<AddMembers addUserToGroup={this.addUserToGroup.bind(this)} />:<div></div>} 
+                        <GroupMembers updateMembership={this.updateMembership.bind(this)} group={this.state.selectedGroupId} isAdminOrCreator={this.state.isAdminOrCreator} seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
+                        {this.state.isAdminOrCreator ? <AddMembers addUserToGroup={this.addUserToGroup.bind(this)} /> : <div></div>}
                     </div>
                 </div>
             </div>)
