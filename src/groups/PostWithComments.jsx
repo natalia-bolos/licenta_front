@@ -9,7 +9,7 @@ import Attachment from "./Attachment";
 
 const PostWithComments = ({ postId, userId, username, text, timestamp, comments, attachments }) => {
    
-    const commentsList = comments.map(comment => <PostComment key={comment.groupPostCommentId} postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
+    // const commentsList = comments.map(comment => <PostComment key={comment.groupPostCommentId} postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
     const attachmentList=attachments.map(attachment=><Attachment attachment={attachment} />);
     return (
         <React.Fragment key={postId} className="post">

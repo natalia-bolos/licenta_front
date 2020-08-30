@@ -1,7 +1,6 @@
 import React from "react";
-import PostComment from "./PostComment";
 import {
-    ListItem, ListItemText, List, Divider
+    ListItem, ListItemText
 } from '@material-ui/core';
 import { getGroupFile } from '../util/ApiUtils';
 const Attachment = ({ attachment }) => {

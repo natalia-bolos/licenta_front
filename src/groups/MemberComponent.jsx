@@ -1,22 +1,23 @@
 import React from "react";
 import {
     ListItem, ListItemText, Menu, MenuItem,
-    Button, TextField, Select, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle, Divider
+    Button, Select, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle
 } from '@material-ui/core'
 import "./groupcomponent.css"
 
 
-const MemberComponent = ({ userId, name, username, seeProfile, role, user, isAdminOrCreator, group, updateMembership }) => {
+const MemberComponent = ({ userId, name, username, role, user, isAdminOrCreator, group, updateMembership, handleChatClick, seeProfile }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const [ROLE_USER] = React.useState({ id: 1, name: "User" });
     const [ROLE_ADMIN] = React.useState({ id: 2, name: "Admin" });
     const [ROLE_CREATOR] = React.useState({ id: 3, name: "Creator" });
-    const roles =[
-        {},ROLE_USER, ROLE_ADMIN, ROLE_CREATOR
+    const roles = [
+        {}, ROLE_USER, ROLE_ADMIN, ROLE_CREATOR
     ]
     const [selectedRole, setSelectedRole] = React.useState(roles[role.roleId]);
-    const roleNames=["User","Admin","Creator"];
+    const roleNames = ["User", "Admin", "Creator"];
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -27,6 +28,10 @@ const MemberComponent = ({ userId, name, username, seeProfile, role, user, isAdm
 
     const handleProfileClick = () => {
         seeProfile(userId);
+    }
+
+    const handleMenuChatClick = () => {
+        handleChatClick(userId);
     }
 
     const handleRoleUpdate = () => {
@@ -50,9 +55,9 @@ const MemberComponent = ({ userId, name, username, seeProfile, role, user, isAdm
 
     const handleSetClick = () => {
         updateMembership({
-                groupId:group,
-                userId:userId,
-                roleId:selectedRole.id
+            groupId: group,
+            userId: userId,
+            roleId: selectedRole.id
         });
     }
 
@@ -98,7 +103,7 @@ const MemberComponent = ({ userId, name, username, seeProfile, role, user, isAdm
             <ListItem >
                 <ListItemText onClick={handleClick}
                     primary={name}
-                    secondary={<span><p>{username}</p><p>{roleNames[role.roleId-1]}</p></span>}
+                    secondary={<span><p>{username}</p><p>{roleNames[role.roleId - 1]}</p></span>}
                     value={userId}
                 />
             </ListItem>
@@ -112,7 +117,7 @@ const MemberComponent = ({ userId, name, username, seeProfile, role, user, isAdm
             >
                 <MenuItem onClick={handleProfileClick}>See Profile</MenuItem>
                 {role.name != 'ROLE_CREATOR' && isAdminOrCreator ? <MenuItem onClick={handleRoleUpdate}>Update Role</MenuItem> : ''}
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleMenuChatClick}>Chat</MenuItem>
             </Menu>
             {body}
         </div>

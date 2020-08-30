@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField, Select, MenuItem, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle, Divider } from '@material-ui/core';
+import { Button, TextField, Select, MenuItem, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle } from '@material-ui/core';
 import { getUsersByName } from '../util/ApiUtils';
 
 export default function AddMembers({ addUserToGroup }) {

@@ -3,6 +3,7 @@ import { BrowserRouter, Route} from 'react-router-dom';
 import UserAuthentication from "./user/UserAuthentication";
 import Navbar from './layout/Navbar';
 import Landing  from './pages/Landing';
+import Chat  from './pages/Chat';
 import Profile from './user/Profile'
 import Dashboard  from './pages/Dashboard';
 import MoreInfo from "./user/MoreInfo";
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Route path="/start" render={(props)=><UserAuthentication {...props} toggleLoggedIn={this.toggleLoggedIn.bind(this)}/>}/>
           <Route path="/dashboard" component={Dashboard}/>
           <Route path="/profile/:userId" component={Profile}/>
+          <Route path="/chat/:userId" component={Chat}/>
           <Route path="/moreinfo" component={MoreInfo}/>
           <Route exact path="/" component={Landing}/>
         </div> 

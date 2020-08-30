@@ -1,20 +1,8 @@
 import React from 'react';
 import {
     Typography,
-    Avatar,
     Divider,
     Chip,
-    Grid,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,g
-    // Chip,
-    // Card,
-    // CardMedia,
-    // CardContent,
-    // CardActions,
-    // IconButton
 } from '@material-ui/core';
 
 export default class Skills extends React.Component{

@@ -141,6 +141,15 @@ export function updateMembership(membership){
         body: JSON.stringify(membership)
     })
 }
+
+export function getConversation(conversationRequest){
+    return request({
+        url:API_BASE_URL+"conversation",
+        method: 'POST',
+        body: JSON.stringify(conversationRequest)
+    })
+}
+
 export function addFile(postId,file){
     var data = new FormData();
     data.append("file",file);

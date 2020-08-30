@@ -162,6 +162,10 @@ export default class Dashboard extends React.Component {
         this.props.history.push('/profile/' + userId);
     }
 
+    handleChatClick(userId) {
+        this.props.history.push('/chat/' + userId);
+    }
+
 
 
     render() {
@@ -180,7 +184,7 @@ export default class Dashboard extends React.Component {
                         <Textimput createNewPost={this.createNewPost.bind(this)} />
                     </div>
                     <div className="col s2">
-                        <GroupMembers updateMembership={this.updateMembership.bind(this)} group={this.state.selectedGroupId} isAdminOrCreator={this.state.isAdminOrCreator} seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
+                        <GroupMembers handleChatClick={this.handleChatClick.bind(this)} updateMembership={this.updateMembership.bind(this)} group={this.state.selectedGroupId} isAdminOrCreator={this.state.isAdminOrCreator} seeProfile={this.handleProfileClick.bind(this)} members={this.state.members} />
                         {this.state.isAdminOrCreator ? <AddMembers addUserToGroup={this.addUserToGroup.bind(this)} /> : <div></div>}
                     </div>
                 </div>

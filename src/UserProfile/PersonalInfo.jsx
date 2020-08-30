@@ -7,8 +7,7 @@ import {
     List,
     ListItem,
     ListItemIcon,
-    ListItemText,
-    IconButton
+    ListItemText
 } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
@@ -19,15 +18,11 @@ import '../UserProfile/styles.css';
 
 
 export default class PersonalInfo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-   
 
     getInitials = function (string) {
         var names = string.toString().split(' '),
             initials = names[0].substring(0, 1).toUpperCase();
-        
+
         if (names.length > 1) {
             initials += names[names.length - 1].substring(0, 1).toUpperCase();
         }
@@ -37,10 +32,10 @@ export default class PersonalInfo extends React.Component {
     render() {
         return (
             <div>
-                <div style={{display: 'flex', alignItems: 'center', position: 'relative'}}>
+                <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
                     <Avatar style={{ margin: '15px', width: '80px', height: '80px', color: '#FBC410' }}>{this.getInitials(this.props.moreInfo.name)}</Avatar>
                     <Typography variant="h4" >
-                      {this.props.moreInfo.name}
+                        {this.props.moreInfo.name}
                     </Typography>
                 </div>
                 <Divider />
@@ -61,7 +56,7 @@ export default class PersonalInfo extends React.Component {
                                 />
                             </ListItem>
                             <ListItem>
-                            <ListItemIcon>
+                                <ListItemIcon>
                                     <EmailIcon />
                                 </ListItemIcon>
                                 <ListItemText
