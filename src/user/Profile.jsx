@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
         subjects: [],
         name: "",
         mail: ""
-      }
+      } 
     };
 
   }

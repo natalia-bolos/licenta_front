@@ -18,6 +18,14 @@ import '../UserProfile/styles.css';
 
 
 export default class PersonalInfo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            UTCN: "Technical University of Cluj Napoca",
+            UBB: "Babes-Bolyai University",
+            UMF: "Iuliu Hategan University of Medicine and Pharmacy"
+        }
+    }
 
     getInitials = function (string) {
         var names = string.toString().split(' '),
@@ -74,7 +82,7 @@ export default class PersonalInfo extends React.Component {
                                 </ListItemIcon>
                                 <ListItemText
                                     primary="University"
-                                    secondary={this.props.moreInfo.moreUserInfo.university}
+                                    secondary={this.state[this.props.moreInfo.moreUserInfo.university]}
                                 />
                             </ListItem>
                             <ListItem>

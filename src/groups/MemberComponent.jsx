@@ -1,9 +1,8 @@
 import React from "react";
 import {
     ListItem, ListItemText, Menu, MenuItem,
-    Button, Select, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle
+    Button, Select, Dialog, DialogActions, DialogContent, DialogContentText, FormControl, DialogTitle, Typography
 } from '@material-ui/core'
-import "./groupcomponent.css"
 
 
 const MemberComponent = ({ userId, name, username, role, user, isAdminOrCreator, group, updateMembership, handleChatClick, seeProfile }) => {
@@ -103,7 +102,9 @@ const MemberComponent = ({ userId, name, username, role, user, isAdminOrCreator,
             <ListItem >
                 <ListItemText onClick={handleClick}
                     primary={name}
-                    secondary={<span><p>{username}</p><p>{roleNames[role.roleId - 1]}</p></span>}
+                    secondary={<React.Fragment> <Typography component="p">{username}</Typography>
+                        <Typography component="p">{roleNames[role.roleId - 1]}</Typography>
+                    </React.Fragment>}
                     value={userId}
                 />
             </ListItem>

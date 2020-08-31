@@ -1,21 +1,23 @@
 import React from "react";
 import {
-    ListItem, ListItemText, List, Divider
+    ListItem, ListItemText, List, Divider, Typography
 } from '@material-ui/core';
-import "./post.css" 
+import "./post.css"
 import Attachment from "./Attachment";
 
 
-const PostWithAttachments = ({ postId,  username, text, timestamp,  attachments }) => {
-   
-    const attachmentList=attachments.map(attachment=><Attachment attachment={attachment} />);
+const PostWithAttachments = ({ postId, username, text, timestamp, attachments }) => {
+
+    const attachmentList = attachments.map(attachment => <Attachment attachment={attachment} />);
     return (
-        <React.Fragment key={postId} className="post">
+        <React.Fragment key={postId}>
             <ListItem>
                 <ListItemText
-                    primary={<p className="usr"><b>{username}</b></p>}
-                    secondary={<div><p className="post-text"><b>{text}</b></p>
-                        <p className="times">{timestamp}</p></div>}
+                    primary={<Typography className="usr"><b>{username}</b></Typography>}
+                    secondary={<React.Fragment>
+                        <Typography component="p" className="post-text"><b>{text}</b></Typography>
+                        <Typography component="p" className="times">{timestamp}</Typography>
+                    </React.Fragment>}
                 />
             </ListItem>
             <List>
