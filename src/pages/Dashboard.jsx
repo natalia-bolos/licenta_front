@@ -124,7 +124,22 @@ export default class Dashboard extends React.Component {
             userId: user.userId,
             roleId: role.id
         }).then(() => {
+            const roles = [
+                {
+                    roleId: 1,
+                    name: "ROLE_USER"
+                },
+                {
+                    roleId: 2,
+                    name: "ROLE_ADMIN"
+                },
+                {
+                    roleId: 3,
+                    name: "ROLE_CREATOR"
+                }
+            ]
             var currentMembers = this.state.members;
+            user.role=roles[role.id-1];
             currentMembers.push(user);
             this.setState({ members: currentMembers });
         })
