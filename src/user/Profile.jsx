@@ -1,6 +1,5 @@
 import React from 'react';
 import PersonalInfo from '../UserProfile/PersonalInfo';
-import UserPosts from '../UserProfile/UserPosts';
 import Skills from '../UserProfile/Skills';
 import FavouriteSubjects from '../UserProfile/FavouriteSubjects';
 import '../UserProfile/styles.css';
@@ -41,7 +40,6 @@ export default class Profile extends React.Component {
         <PersonalInfo moreInfo={this.state.moreInfo} />
         <Skills skills={this.state.moreInfo.skills} />
         <FavouriteSubjects subjects={this.state.moreInfo.subjects} />
-        <UserPosts />
       </div>
     )
   }

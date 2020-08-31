@@ -1,5 +1,5 @@
 import React from "react";
-import PostWithComments from "./PostWithComments";
+import PostWithAttachments from "./PostWithAttachments";
 import {
     List,
     Paper
@@ -7,14 +7,17 @@ import {
 export class GroupData extends React.Component {
 
     render() {
-        const postList = this.props.posts.map(post => <PostWithComments key={post.postId} userId={post.userId} username={post.username} postId={post.postId} text={post.text} timestamp={post.timestamp} comments={post.comments} attachments={post.attachments}/>)
+        const postList = this.props.posts.map(post => <PostWithAttachments key={post.postId} userId={post.userId} username={post.username} postId={post.postId} text={post.text} timestamp={post.timestamp} comments={post.comments} attachments={post.attachments} />)
         return (
-            <Paper style={{ maxHeight: 500, overflow: 'auto' }}>
-               <h6>{this.props.groupName}</h6>
-                <List>
-                    {postList}
-                </List>
-            </Paper>
+            <div>
+                <h6>{this.props.groupName}</h6>
+                <Paper style={{ maxHeight: 500, overflow: 'auto' }}>
+
+                    <List>
+                        {postList}
+                    </List>
+                </Paper>
+            </div>
         )
     }
 

@@ -1,5 +1,4 @@
 import React from "react";
-import PostComment from "./PostComment";
 import {
     ListItem, ListItemText, List, Divider
 } from '@material-ui/core';
@@ -7,9 +6,8 @@ import "./post.css"
 import Attachment from "./Attachment";
 
 
-const PostWithComments = ({ postId, userId, username, text, timestamp, comments, attachments }) => {
+const PostWithAttachments = ({ postId,  username, text, timestamp,  attachments }) => {
    
-    // const commentsList = comments.map(comment => <PostComment key={comment.groupPostCommentId} postId={comment.postId} userId={comment.userId} username={comment.username} text={comment.text} timestamp={comment.timestamp} />)
     const attachmentList=attachments.map(attachment=><Attachment attachment={attachment} />);
     return (
         <React.Fragment key={postId} className="post">
@@ -20,9 +18,6 @@ const PostWithComments = ({ postId, userId, username, text, timestamp, comments,
                         <p className="times">{timestamp}</p></div>}
                 />
             </ListItem>
-            {/* <ListItem>
-                {<List>{commentsList}</List>}
-            </ListItem> */}
             <List>
                 {attachmentList}
             </List>
@@ -32,4 +27,4 @@ const PostWithComments = ({ postId, userId, username, text, timestamp, comments,
     )
 };
 
-export default PostWithComments;
+export default PostWithAttachments;
