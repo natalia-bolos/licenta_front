@@ -25,10 +25,13 @@ export default class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        getGroupsOfUser(localStorage.getItem(USER_ID)).then(response => {
-            this.setState({ groups: response })
-            if (response !== undefined && response.length != 0) {
-                this.setSelectedGroup(response[0].groupId, response[0].name);
+        Promise.all([
+            getGroupsOfUser(localStorage.getItem(USER_ID)),
+            getAllGroups()
+        ]).then(([groupsRetrivedOfUsers,allRetrivedGroups ])=> {
+            this.setState({ groups: groupsRetrivedOfUsers, allGroups: allRetrivedGroups })
+            if (groupsRetrivedOfUsers !== undefined && groupsRetrivedOfUsers.length != 0) {
+                this.setSelectedGroup(groupsRetrivedOfUsers[0].groupId, groupsRetrivedOfUsers[0].name);
             }
         })
     }
@@ -43,10 +46,9 @@ export default class Dashboard extends React.Component {
     setSelectedGroup(selectedGroup, selectedGroupName) {
         Promise.all([
             getPostsOfGroup(selectedGroup),
-            getMembersOfGroup(selectedGroup),
-            getAllGroups()
+            getMembersOfGroup(selectedGroup)  
         ]).then(([retreivedPosts, retreivedMembers, retreivedGroups]) => {
-            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, allGroups: retreivedGroups, isAdminOrCreator: this.isLoggedUserAdminOrCreator(retreivedMembers) });
+            this.setState({ selectedGroupName: selectedGroupName, posts: retreivedPosts, members: retreivedMembers, selectedGroupId: selectedGroup, isAdminOrCreator: this.isLoggedUserAdminOrCreator(retreivedMembers) });
         })
     }
 
