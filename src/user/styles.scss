@@ -6,6 +6,7 @@
   
     .header {
       font-size: 24px;
+      font-weight: 500;
     }
   
     .content {
@@ -13,7 +14,7 @@
       flex-direction: column;
   
       .image {
-        width: 16em;
+        width: 14em;
         img {
           width: 100%;
           height: 100%;
@@ -36,9 +37,9 @@
             color: black;
           }
           input {
-            margin-top: 5px;
+            margin-top: 2px;
             min-width: 18em;
-            height: 37px;
+            height: 30px;
             padding: 0px 10px;
             font-size: 16px;
             background-color: #cfcbcb;
@@ -66,4 +67,8 @@
     .footer {
       margin-top: 2em;
     }
+  }
+
+  .marginbtn{
+    margin-top: -70px;
   }

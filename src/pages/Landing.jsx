@@ -13,14 +13,10 @@ class Landing extends React.Component{
                             <img src={land} alt="land" />
                         </div>
                         <div className="landtxt col s6 m6">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                             when an unknown printer took a galley of type and scrambled it to make a type 
-                             specimen book. It has survived not only five centuries, but also the leap into 
-                             electronic typesetting, remaining essentially unchanged. It was popularised in the
-                              1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                              and more recently with desktop publishing software like Aldus PageMaker including 
-                              versions of Lorem Ipsum.</p>
+                            <p>Study Buddy is a platform dedicated to students worldwide.
+                                <p>Create an account, join groups based on your interests and academic needs and connect with students
+                                     form different universities accross the globe.</p>
+                            </p>
                             <Link to='start' className="btn land-btn">Start learning!</Link>
                         </div>
                     </div>

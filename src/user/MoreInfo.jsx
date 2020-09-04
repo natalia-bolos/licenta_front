@@ -138,7 +138,7 @@ export default class MoreInfo extends React.Component {
                 <p className='wlcm'>Welcome! </p>
                 <p className='txt'>In order to help you connect with other sudents, we would like to get to know you a bit better</p>
                 <Divider />
-                <p className='txt'>Describe yourself in a few words</p>
+                <p className='txt'>Describe yourself in a few words:</p>
                 <TextField className='description input-boxes' id="description" variant="filled" onChange={this.handleChange.bind(this)} />
                 <Grid className='algn' container spacing={2}>
                     <Grid item xs={4}>
@@ -176,7 +176,7 @@ export default class MoreInfo extends React.Component {
                 </Grid>
                 <Divider />
                 <p className='txt'>Your top skills</p>
-                <Grid container spacing={1}>
+                <Grid container spacing={1} className='algntheshit'>
                     <Grid item xs={3}>
                         <TextField className='input-boxes skill' id="skill1" variant="filled" style={{ margin: '5px' }} onChange={this.handleChange.bind(this)} />
                         <TextField className='input-boxes skill' id="skill2" variant="filled" style={{ margin: '5px' }} onChange={this.handleChange.bind(this)} />
@@ -191,7 +191,7 @@ export default class MoreInfo extends React.Component {
                     </Grid>
                 </Grid>
                 <p className='txt'>Your favourite subjects</p>
-                <Grid container spacing={1}>
+                <Grid container spacing={1} className='algntheshit'>
                     <Grid item xs={3}>
                         <TextField className='input-boxes skill' id="subject1" variant="filled" style={{ margin: '5px' }} onChange={this.handleChange.bind(this)} />
                     </Grid>

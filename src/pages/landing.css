@@ -7,15 +7,17 @@
 
 .landtxt{
     text-align: center;
-    margin-top: 150px;
+    margin-top: 100px;
     color: white;
     z-index: 1;
     position:relative ;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
     
 }
 
 .land-btn{
-    margin-top: 20px;
+    margin-top: 100px;
     z-index: 1;
     position:relative ;
 }

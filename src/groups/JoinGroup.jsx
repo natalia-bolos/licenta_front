@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { USER_ID } from '../constants';
+import './joingroup.css';
 
 export default function JoinGroup({ allGroups,joinGroup }) {
     const [open, setOpen] = React.useState(false);
@@ -56,7 +57,7 @@ export default function JoinGroup({ allGroups,joinGroup }) {
     );
     return (
         <div>
-            <Button className="fixedbutton" variant="contained" onClick={handleOpen}> Join Group</Button>
+            <Button className="fixedbutton joinbtn " variant="contained" onClick={handleOpen}> Join Group</Button>
             {body}
         </div>
     );

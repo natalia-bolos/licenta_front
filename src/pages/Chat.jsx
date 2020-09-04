@@ -9,6 +9,7 @@ import {
     Button,
     Paper
 } from '@material-ui/core'
+import "./chat.css";
 
 export default class Chat extends React.Component {
     constructor(props) {
@@ -45,7 +46,7 @@ export default class Chat extends React.Component {
     render() {
 
         return (
-            <div className="container">
+            <div className="container chat">
                 <Paper style={{ maxHeight: 500, overflow: 'auto' }}>
                     <List>
                         {this.state.messages.map(messageObj => <ListItem><ListItemText
@@ -54,8 +55,8 @@ export default class Chat extends React.Component {
                         /></ListItem>)}
                     </List>
                 </Paper>
-                <TextField className='inp input-boxes' id="messageText" placeholder="New message" variant="filled" value={this.state.messageText} onChange={this.handleChange.bind(this)} />
-                <Button onClick={this.sendMessage.bind(this)}>Send</Button>
+                <TextField className='inp input-boxes chat-input' id="messageText" placeholder="New message" variant="filled" value={this.state.messageText} onChange={this.handleChange.bind(this)} />
+                <Button onClick={this.sendMessage.bind(this)} className='btn'>Send</Button>
             </div>
         )
     }

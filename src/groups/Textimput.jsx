@@ -37,7 +37,7 @@ class textimp extends React.Component {
     render() {
         return (
             <div>
-                <Grid container>
+                <Grid container className="textinput">
                     <Grid item xs={8}>
                         <form noValidate autoComplete="off">
                             <TextField className='inp input-boxes' id="post" placeholder="New post" variant="filled" onChange={this.handleChange.bind(this)} />
@@ -49,7 +49,8 @@ class textimp extends React.Component {
                     <Grid item xs={2}>
                         <Button
                             variant="contained"
-                            component="label">
+                            component="label"
+                            className="filebtn">
                             File
                          <input onChange={this.onFileChange}
                                 type="file"
@@ -58,24 +59,6 @@ class textimp extends React.Component {
                         </Button>
                     </Grid>
                 </Grid>
-
-                {/* <div className="row">
-                <form className="col s12">
-                    <div className="row txtimp">
-                        <div className="input-field col s10">
-                            <textarea id="post" className="materialize-textarea" onChange={this.handleChange.bind(this)}></textarea>
-                            <label htmlFor="post">New post</label>
-                        </div>
-                        <div className="btn file-field input-field col s1">
-                            <span>File</span>
-                            <input type="file" />
-                        </div>
-                        <div className="btn file-field input-field col s1">
-                            <span onClick={this.createPost.bind(this)}>Send</span>
-                        </div>
-                    </div>
-                </form>
-            </div> */}
             </div>
         )
     }

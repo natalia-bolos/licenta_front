@@ -56,7 +56,7 @@ export class Register extends React.Component {
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
-        <div className="header">Register:</div>
+        <div className="header">Register</div>
         <div className="content">
           <div className="image">
             <img src={loginImg} />
@@ -79,14 +79,14 @@ export class Register extends React.Component {
             </div>
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input type="text" name="password" placeholder="password" id="password" value={this.state.password}
+              <input type="password" name="password" placeholder="password" id="password" value={this.state.password}
                 onChange={this.handleChange} />
             </div>
             <p style={{ color: 'red' }}>{this.state.errorMessage}</p>
           </div>
         </div>
         <div className="footer">
-          <button type="button" className="btn" onClick={this.signUpApiCallOnClick}>
+          <button type="button" className="btn marginbtn" onClick={this.signUpApiCallOnClick}>
             Register
           </button>
         </div>
