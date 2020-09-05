@@ -2,8 +2,13 @@ import React from "react";
 import land from "./ideas.svg";
 import { Link} from 'react-router-dom';
 import "./landing.css";
+import { ACCESS_TOKEN } from '../constants';
 
 class Landing extends React.Component{
+    
+    componentDidMount(){
+        localStorage.clear();
+    }
     render() {
         return (
             <div className='Back'>
